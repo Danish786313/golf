@@ -1,0 +1,6 @@
+
+admin
+tournament 
+courses
+users
+payment
