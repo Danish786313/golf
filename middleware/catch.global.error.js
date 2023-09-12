@@ -1,6 +1,56 @@
 module.exports = async (error, req, res, next) => {
     console.log(error)
-    // if (error instanceof Error) {
+    req.flash('formValue', req.body);
+    req.flash('success', req.success);
+    req.flash('error', res.locals.__(error.message));
+    return res.redirect(req.header('Referer'))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if (error instanceof Error) {
     //     return res.send("Danish khan") //404
     // }
     // if (error instanceof ReferenceError) {
@@ -19,8 +69,3 @@ module.exports = async (error, req, res, next) => {
     //     return res.send("Danish khan") //404
     // }
     // res.status(error.status || 500)
-    req.flash('formValue', req.body);
-    req.flash('success', success);
-    req.flash('error', res.locals.__(error.message));
-    return res.redirect(req.header('Referer'))
-}

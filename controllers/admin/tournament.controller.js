@@ -1,4 +1,4 @@
-const { Tournament, Course } = require("../../models")
+const { Tournament, Course, Category } = require("../../models")
 const utils = require("../../utils/helper")
 const { Op } = require("sequelize");
 
@@ -6,7 +6,8 @@ exports.getCreateTournament = async (req, res, next) => {
     try {
         const { message, error, formValue } = req.query
         let courses = await Course.findAll()
-        return res.render('admin/tournament/create-tournament.ejs', {message, error, formValue, courses: courses});
+        let category = await Category.findAll()
+        return res.render('admin/tournament/create-tournament.ejs', {message, error, formValue, courses: courses, category:category});
     } catch (err) {
         next(err)
     }
@@ -16,7 +17,7 @@ exports.createTournament = async (req, res, next) => {
     try {
         req.body.tournament_type = "PUBLIC"
         let data = Tournament.create(req.body)
-        let success = "Successfully created."
+        req.success = "Successfully created."
         next('last')
     } catch (err) {
         next(err)
@@ -26,6 +27,7 @@ exports.createTournament = async (req, res, next) => {
 exports.getTournament = async (req, res, next) => {
     try {
         const { page, limit, order, search_text, course_id, tournament_type, betting_type } = req.query
+        console.log(req.query)
         let options = {
             include: [{model: Course}],
             offset: page * limit,
@@ -50,7 +52,7 @@ exports.getTournament = async (req, res, next) => {
         }
         let data = await Tournament.findAndCountAll(options)
         let response = utils.getPagingData(res, data, page+1, limit)
-        let courses = await Course.findAll()
+        let courses = await Course.findAll() 
         // return res.send(response)
         return res.render('admin/tournament/tournament.ejs', {
             totalItems: response.totalItems,

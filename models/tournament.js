@@ -12,10 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.Course, {foreignKey: 'course_id'})
+      this.belongsTo(models.Category, {foreignKey: 'category_id'})
     }
   }
   Tournament.init({
     course_id: DataTypes.INTEGER,
+    category_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     venue: DataTypes.STRING,
     bet_amount: DataTypes.DECIMAL,

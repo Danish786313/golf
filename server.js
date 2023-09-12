@@ -10,7 +10,7 @@ process.on('uncaughtException', (err) => {
 })
 server.listen(port, async () => {
     console.log(`Example app listening at http://localhost:${port}`)
-    sequelize.sync().then(() => { 
+    sequelize.sync({alter: true}).then(() => { 
         console.log("Database connected")
     }).catch((err) => {
         console.log("Database not connected", err)

@@ -69,7 +69,7 @@
                                     </label>
                                     <div class="col-md-5">
                                         <select class="form-control input-height" id="inputID"  name="course_id" required>
-                                            <option selected="selected" value="" >Select...</option>
+                                            <option selected="selected" value="" >Select</option>
                                             <% courses.forEach((course, index) => { %>
                                                 <option value="<%= course.id %>"><%= course.name %></option>
                                             <% }) %>
@@ -118,7 +118,7 @@
                                         <div id="dateIcon" class="input-append date">
                                             <div class="input-group datePicker">
                                                 <input class="formDatePicker form-control" type="date"
-                                                    placeholder="Select Date.." name="end_date" 
+                                                    placeholder="Select Date.." name="end_date" required
                                                     data-input>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                     <div class="col-md-5">
                                         <div id="dateIcon3" class="input-append date">
                                             <div  class="input-group datePicker">
-                                                <input class="formDatePicker form-control" type="date"
+                                                <input class="formDatePicker form-control" type="date" required
                                                     placeholder="Select Date.." name="registration_start_date" 
                                                     data-input>
                                             </div>
@@ -145,7 +145,7 @@
                                     <div class="col-md-5">
                                         <div id="dateIcon4" class="input-append date">
                                             <div  class="input-group datePicker">
-                                                <input class="formDatePicker form-control" type="date"
+                                                <input class="formDatePicker form-control" type="date" required
                                                     placeholder="Select Date.." name="registration_end_date" 
                                                     data-input>
                                             </div>
@@ -158,21 +158,34 @@
                                     </label>
                                     <div class="col-md-5">
                                         <input type="text" name="max_players" data-required="1"
-                                            placeholder=""                                         
+                                            placeholder="" required                               
                                             class="form-control input-height" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3"><%= __('Betting Type') %>
+                                    <label class="control-label col-md-3"><%= __('Betting type') %>
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                        <select class="form-control input-height" name="betting_type">
-                                            <option selected="selected" value="">Type</option>
-                                                <option selected="selected" value="STROKE"><%= __('Stroke') %></option>
-                                                <option value="SKIN"><%= __('Skin') %></option>
-                                                <option value="STABLE"><%= __('Stable') %></option>
-                                                <option value="STABLE_NEGATIVE"><%= __('Stable negative') %></option>
+                                        <select class="form-control input-height" name="betting_type" required>
+                                            <option selected="selected" value="" >Select</option>
+                                            <option value="STROKE">Stroke</option>
+                                            <option value="SKIN">Skin</option>
+                                            <option value="STABLE">Stable</option>
+                                            <option value="STABLE_NEGATIVE">Stable negative</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3"><%= __('Category') %>
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        <select class="form-control input-height" name="category_id" required>
+                                            <option selected="selected" value="" >Select</option>
+                                            <% category.forEach((category, index) => { %>
+                                                <option value="<%= category.id %>"><%= category.name %></option>
+                                            <% }) %>
                                         </select>
                                     </div>
                                 </div>

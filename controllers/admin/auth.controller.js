@@ -5,9 +5,7 @@ const helper = require("../../utils/helper")
 
 exports.getLogin = async (req, res, next) => {
     try {
-        const error = req.flash('error')
-        const message = req.flash('success')
-        const formValue = req.flash('formValue')[0];
+        const { message, error, formValue} = req.query
         return res.render('admin/auth/login.ejs', {message, error, formValue});
     } catch (err) {
         next(err)
