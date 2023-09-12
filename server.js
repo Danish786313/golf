@@ -16,3 +16,4 @@ server.listen(port, async () => {
         console.log("Database not connected", err)
     }) 
 })
+
